@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Follow the Why</title>
+<style>
+/*
+VOICE: office hours. One plain question at a time, a warm reply to whatever you picked.
+IDEA: a conversation with your professor, written down as it happens.
+PICTURE: the conversation itself, question cards stacking as you go.
+COLOUR and TYPE: Hub teal on deep ink at night, white paper by day; system serif questions, system sans replies.
+LAYOUT: one narrow column; big tap targets; nothing to set up.
+*/
+:root{color-scheme:light dark;
+--bg:light-dark(#fbfbf8,#0f1117);--panel:light-dark(#fff,#1a1d29);--ink:light-dark(#1b1e28,#e8e6f0);
+--soft:light-dark(#4a4f5e,#b4b4c8);--line:light-dark(#d9dbe2,#333654);
+--teal:light-dark(#0b6e68,#5ce0d6);--tealbg:light-dark(#e6f4f2,#16302f);
+--amber:light-dark(#8a5300,#ffc66d);--amberbg:light-dark(#fff4e0,#2a2312);
+--rose:light-dark(#9b2c3f,#ff9aae);--rosebg:light-dark(#fdecef,#2d1a20);
+--focus:light-dark(#0b5cd6,#9ec5ff)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;overflow-x:clip}
+h1,h2,h3{font-family:Charter,"Iowan Old Style",Georgia,"Times New Roman",serif;line-height:1.15;text-wrap:balance;margin:0 0 .5em}
+h1{font-size:clamp(32px,6vw,48px)}h2{font-size:clamp(24px,4vw,30px)}h3{font-size:20px}
+a{color:var(--teal)}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+.skip{position:absolute;left:1rem;top:-100px;background:var(--teal);color:var(--bg);padding:.6rem 1rem;z-index:9}.skip:focus{top:0}
+header.top{border-bottom:1px solid var(--line);padding:14px max(5vw,16px);display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.brand{font-family:Charter,Georgia,serif;font-size:20px;font-weight:700;color:var(--ink);text-decoration:none}
+main{max-width:760px;margin:0 auto;padding:clamp(24px,4vw,44px) max(5vw,16px) 64px}
+.view[hidden]{display:none}
+.lede{font-size:20px;color:var(--soft)}
+.start{list-style:none;padding:0;display:grid;gap:12px;margin:20px 0 36px}
+.start a{display:block;padding:18px 20px;border-radius:14px;border:2px solid var(--teal);background:var(--panel);color:var(--ink);text-decoration:none;font-family:Charter,Georgia,serif;font-size:22px}
+.start a:hover{background:var(--tealbg)}
+.search{width:100%;font:inherit;font-size:17px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--ink);margin:8px 0 16px}
+details.area{border:1px solid var(--line);border-radius:12px;background:var(--panel);margin:10px 0}
+details.area summary{cursor:pointer;padding:14px 16px;font-weight:700;min-height:44px}
+details.area ul{list-style:none;margin:0;padding:0 16px 12px}
+details.area li{padding:8px 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.soon{color:var(--soft)}
+.tag{font-size:13px;white-space:nowrap;color:var(--soft)}
+.tag.ready{color:var(--teal);font-weight:700}
+.progress{font-size:15px;color:var(--soft);margin:0 0 6px}
+.log{display:grid;gap:14px}
+.turn{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px}
+.turn h2{font-size:clamp(22px,3.4vw,26px);margin:0 0 14px}
+.turn.past h2{font-size:18px;color:var(--soft);margin-bottom:8px}
+.choices{display:grid;gap:10px}
+.choice{width:100%;text-align:left;min-height:52px;padding:12px 16px;border-radius:12px;border:2px solid var(--line);background:var(--bg);color:var(--ink);font:inherit;cursor:pointer}
+.choice:hover{border-color:var(--teal)}
+.choice.unsure{border-style:dashed;color:var(--soft)}
+.picked{font-size:16px;color:var(--soft);margin:0 0 8px}
+.picked b{color:var(--ink)}
+.reply{border-radius:0 12px 12px 0;padding:12px 14px;border-left:5px solid}
+.reply .v{font-weight:800;margin-right:6px}
+.v1{background:var(--tealbg);border-color:var(--teal)}.v1 .v{color:var(--teal)}
+.v2{background:var(--amberbg);border-color:var(--amber)}.v2 .v{color:var(--amber)}
+.v0{background:var(--rosebg);border-color:var(--rose)}.v0 .v{color:var(--rose)}
+.vn{background:var(--tealbg);border-color:var(--soft)}
+.btn{min-height:48px;padding:10px 22px;border-radius:12px;border:2px solid var(--teal);background:var(--teal);color:var(--bg);font:inherit;font-weight:700;cursor:pointer;margin-top:14px}
+.btn.ghost{background:transparent;color:var(--teal)}
+.endcard{background:var(--panel);border:2px solid var(--teal);border-radius:14px;padding:20px}
+.notice{background:var(--amberbg);border-left:5px solid var(--amber);border-radius:0 12px 12px 0;padding:14px 16px;margin-top:16px}
+.notice b{color:var(--amber)}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.note{font-size:15px;color:var(--soft)}
+footer{border-top:1px solid var(--line);padding:24px max(5vw,16px);font-size:14px;color:var(--soft)}
+footer p{max-width:760px;margin:.4em auto}
+@media(prefers-reduced-motion:no-preference){.reply.fresh,.turn.now{animation:rise .25s ease}}
+@keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media print{header.top,.btn,.choices,footer{display:none!important}body{background:#fff;color:#000}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="top">
+  <a class="brand" href="#home">Follow the Why <span class="note">(working name)</span></a>
+  <a href="#home" class="note">All questions</a>
+</header>
+<main id="main" tabindex="-1">
+
+<section class="view" id="v-home">
+  <h1>Pick a question. Tap your best guess. I'll walk you through it.</h1>
+  <p class="lede">No sign up, nothing to set up, and nothing is graded. Wrong guesses are welcome. That's how this works.</p>
+  <h2>Start here</h2>
+  <ul class="start" id="ready"></ul>
+  <h2>All the questions</h2>
+  <p class="note" id="count"></p>
+  <label for="find" class="note">Search the questions</label>
+  <input id="find" class="search" type="search" placeholder="Try oxygen, fat, DNA">
+  <div id="areas"></div>
+</section>
+
+<section class="view" id="v-talk" hidden>
+  <p class="progress" id="prog" aria-live="polite"></p>
+  <div class="log" id="log" aria-live="polite"></div>
+</section>
+
+</main>
+<footer>
+  <p>A free supplement to class, not a replacement for it, and not exam preparation. Written with AI assistance. It may contain errors, so check it against your textbook and instructor. Disease connections are for learning only, and nothing here is medical advice. Not affiliated with or endorsed by any university, testing organization or publisher.</p>
+  <p>Professor Guttmann</p>
+</footer>
+
+<script src="data/questions.js"></script>
+<script src="data/dialogues.js"></script>
+<script>
+{
+const A=window.AREAS||[],D=window.DIALOGUES||{};
+const $=s=>document.querySelector(s);
+const esc=t=>String(t).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const VERD={1:"Yes.",2:"Close.",0:"Not quite.",n:"Here's the idea."};
+
+/* home */
+const all=A.flatMap(a=>a.qs.map(q=>typeof q==="string"?{t:q}:q));
+const ready=all.filter(q=>q.id&&D[q.id]);
+$("#ready").innerHTML=ready.map(q=>`<li><a href="#q-${q.id}">${esc(q.t)}</a></li>`).join("");
+$("#count").textContent=`${ready.length} of ${all.length} questions are ready. More are being added.`;
+function drawAreas(filter){
+  const f=(filter||"").toLowerCase().trim();
+  $("#areas").innerHTML=A.map(a=>{
+    const items=a.qs.map(q=>typeof q==="string"?{t:q}:q).filter(q=>!f||q.t.toLowerCase().includes(f));
+    if(!items.length)return"";
+    const n=items.filter(q=>q.id&&D[q.id]).length;
+    return `<details class="area"${f?" open":""}><summary>${esc(a.name)} <span class="tag">${items.length} questions${n?", "+n+" ready":""}</span></summary><ul>${items.map(q=>q.id&&D[q.id]
+      ?`<li><a href="#q-${q.id}">${esc(q.t)}</a><span class="tag ready">Ready</span></li>`
+      :`<li><span class="soon">${esc(q.t)}</span><span class="tag">Coming soon</span></li>`).join("")}</ul></details>`}).join("")||`<p class="note">No questions match that yet.</p>`;
+}
+drawAreas("");
+$("#find").addEventListener("input",e=>drawAreas(e.target.value));
+
+/* conversation */
+let cur=null;
+function start(id){cur={id,d:D[id],i:0,picks:[]};drawTalk()}
+function drawTalk(focusSel){
+  const {d,i,picks}=cur,n=d.steps.length;
+  let h=`<div class="turn"><h1 style="font-size:clamp(28px,5vw,40px);margin:0">${esc(d.title)}</h1></div>`;
+  for(let k=0;k<Math.min(i+1,n);k++){
+    const s=d.steps[k],p=picks[k];
+    const now=k===i&&p===undefined;
+    h+=`<div class="turn${now?" now":" past"}"><h2 id="q${k}" tabindex="-1">${esc(s.q)}</h2>`;
+    if(p===undefined){
+      h+=`<div class="choices" role="group" aria-labelledby="q${k}">${s.ch.map((c,j)=>`<button class="choice" data-c="${j}">${esc(c[0])}</button>`).join("")}<button class="choice unsure" data-c="n">Not sure</button></div>`;
+    }else{
+      const c=p==="n"?null:s.ch[p];
+      const v=c?c[1]:"n",txt=(c?c[2]:s.ns).replace(/^(Yes|Close)\.\s+/,"");
+      h+=`<p class="picked">You picked: <b>${esc(c?c[0]:"Not sure")}</b></p><div class="reply v${v}${k===i?" fresh":""}" id="r${k}" tabindex="-1"><span class="v">${VERD[v]}</span>${esc(txt)}</div>`;
+      if(k===i)h+=`<button class="btn" id="next">${k===n-1?"See what you figured out":"Next question"}</button>`;
+    }
+    h+=`</div>`;
+  }
+  if(i>=n){
+    const e=d.end;
+    h+=`<div class="endcard" ><h2 id="endh" tabindex="-1">Here's what you just figured out</h2><p>${esc(e.sum)}</p><div class="notice"><b>Notice what we did.</b> ${esc(e.notice)}</div>
+    <h3 style="margin-top:20px">Try another</h3><div class="row">${(e.next||[]).filter(x=>D[x]).map(x=>`<a class="btn ghost" href="#q-${x}">${esc(D[x].title)}</a>`).join("")}</div>
+    <div class="row"><button class="btn ghost" id="again">Start this one over</button><a class="btn ghost" href="#home">All questions</a></div></div>`;
+  }
+  $("#log").innerHTML=h;
+  $("#prog").textContent=i<n?`Question ${i+1} of ${n}`:"Done";
+  $("#log").querySelectorAll(".choice").forEach(b=>b.addEventListener("click",()=>{const c=b.dataset.c;cur.picks[cur.i]=c==="n"?"n":+c;drawTalk("#r"+cur.i)}));
+  $("#next")?.addEventListener("click",()=>{cur.i++;drawTalk(cur.i<n?"#q"+cur.i:"#endh")});
+  $("#again")?.addEventListener("click",()=>{start(cur.id);$("#q0")?.focus()});
+  if(focusSel){const el=$(focusSel);if(el){el.focus({preventScroll:true});el.scrollIntoView({block:"center",behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"})}}
+}
+
+function route(){
+  const h=(location.hash||"#home").slice(1);
+  const talk=h.startsWith("q-")&&D[h.slice(2)];
+  $("#v-home").hidden=!!talk;$("#v-talk").hidden=!talk;
+  if(talk){start(h.slice(2))}
+  window.scrollTo(0,0);
+}
+window.addEventListener("hashchange",route);route();
+}
+</script>
+</body>
+</html>
