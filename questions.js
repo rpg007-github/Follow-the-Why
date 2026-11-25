@@ -1,4 +1,4 @@
-/* The 200 core questions. To add a finished conversation, give the entry an id that matches a key in dialogues.js. */
+/* The 200 core questions. To publish a lesson, give the entry an id that matches a file in the lessons folder, for example {t:"Why do we eat?",id:"eat"} for lessons/eat.js. */
 window.AREAS = [
 {name:"Atoms, bonds and functional groups", qs:[
 "Why does life use mostly carbon, hydrogen, oxygen, nitrogen, phosphorus and sulfur?",
@@ -23,7 +23,7 @@ window.AREAS = [
 "Why can your body use one mirror image of a molecule but not the other?"]},
 {name:"Water, solutions and pH", qs:[
 "Why is water so unusual?",
-{t:"Why do oil and water separate?",id:"oilwater"},
+"Why do oil and water separate?",
 "What does \"water always wins\" mean?",
 "Why does ice float, and why does that matter for life?",
 "Why does sweating cool you down?",
@@ -48,7 +48,7 @@ window.AREAS = [
 "Why don't you just eat ATP?",
 "Why is fat food and salt isn't?",
 "Why does fat hold more energy than sugar?",
-{t:"Why do we need oxygen?",id:"oxygen"},
+"Why do we need oxygen?",
 "What does it mean to burn food?",
 "What is oxidation, really?",
 "When hydrogen moves, why count the electrons?",
@@ -72,7 +72,7 @@ window.AREAS = [
 "What is a reducing sugar?",
 "What does the A1c test actually measure?",
 "What is a fatty acid?",
-{t:"Why is butter solid and olive oil liquid?",id:"butter"},
+"Why is butter solid and olive oil liquid?",
 "What makes a trans fat different?",
 "Why must omega 3 fats come from your diet?",
 "What is a triacylglycerol, and why store energy that way?",
@@ -136,7 +136,7 @@ window.AREAS = [
 "What are ketone bodies, and why does the liver make them?",
 "Why can't humans turn fat into glucose?",
 "How does the body make glucose during a fast?",
-{t:"Why do we eat protein?",id:"protein"},
+"Why do we eat protein?",
 "What happens to the nitrogen in protein?",
 "How does insulin change metabolism?",
 "What does glucagon do?",

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Follow the Why</title>
+<style>
+/*
+VOICE: a professor talking a student through an idea, asking before telling.
+IDEA: a lecture written out, with each question held closed until the student has thought about it.
+PICTURE: the lesson itself, climbing in four clear levels from fundamentals to MCAT.
+COLOUR and TYPE: Hub teal on deep ink at night, white paper by day; system serif for questions and headings, system sans for talk.
+LAYOUT: one readable column, level links at the top, questions as cards you open.
+*/
+:root{color-scheme:light dark;
+--bg:light-dark(#fbfbf8,#0f1117);--panel:light-dark(#fff,#1a1d29);--ink:light-dark(#1b1e28,#e8e6f0);
+--soft:light-dark(#4a4f5e,#b4b4c8);--line:light-dark(#d9dbe2,#333654);
+--teal:light-dark(#0b6e68,#5ce0d6);--tealbg:light-dark(#e6f4f2,#16302f);
+--amber:light-dark(#8a5300,#ffc66d);--amberbg:light-dark(#fff4e0,#2a2312);
+--focus:light-dark(#0b5cd6,#9ec5ff)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.7 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;overflow-x:clip}
+h1,h2,h3{font-family:Charter,"Iowan Old Style",Georgia,"Times New Roman",serif;line-height:1.15;text-wrap:balance;margin:0 0 .5em}
+h1{font-size:clamp(32px,6vw,48px)}h2{font-size:clamp(24px,4vw,32px)}h3{font-size:20px}
+a{color:var(--teal)}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+.skip{position:absolute;left:1rem;top:-100px;background:var(--teal);color:var(--bg);padding:.6rem 1rem;z-index:9}.skip:focus{top:0}
+header.top{border-bottom:1px solid var(--line);padding:14px max(5vw,16px);display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.brand{font-family:Charter,Georgia,serif;font-size:20px;font-weight:700;color:var(--ink);text-decoration:none}
+main{max-width:760px;margin:0 auto;padding:clamp(24px,4vw,44px) max(5vw,16px) 64px}
+.view[hidden]{display:none}
+.lede{font-size:20px;color:var(--soft)}
+.search{width:100%;font:inherit;font-size:17px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--ink);margin:6px 0 16px}
+details.area{border:1px solid var(--line);border-radius:12px;background:var(--panel);margin:10px 0}
+details.area>summary{cursor:pointer;padding:14px 16px;font-weight:700;min-height:44px}
+details.area ul{list-style:none;margin:0;padding:0 16px 12px}
+details.area li{padding:8px 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.soon{color:var(--soft)}
+.tag{font-size:13px;white-space:nowrap;color:var(--soft)}.tag.ready{color:var(--teal);font-weight:700}
+.featured{display:block;padding:18px 20px;border-radius:14px;border:2px solid var(--teal);background:var(--panel);color:var(--ink);text-decoration:none;font-family:Charter,Georgia,serif;font-size:22px;margin:12px 0}
+.levels{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 28px;padding:0;list-style:none}
+.levels a{display:inline-block;padding:8px 14px;border:1px solid var(--line);border-radius:20px;text-decoration:none;font-size:15px;font-weight:600;background:var(--panel)}
+.level{margin-top:44px;padding-top:14px;border-top:3px solid var(--teal)}
+.level .step{font-size:14px;font-weight:700;color:var(--teal);margin:0}
+.talk{margin:16px 0}
+.ask{background:var(--panel);border:1px solid var(--line);border-left:5px solid var(--teal);border-radius:0 12px 12px 0;padding:16px 18px;margin:20px 0}
+.ask .qq{font-family:Charter,Georgia,serif;font-size:21px;line-height:1.35;margin:0 0 6px}
+.ask .think{font-size:15px;color:var(--soft);margin:0 0 10px}
+details.ans>summary{cursor:pointer;display:inline-block;min-height:44px;padding:9px 16px;border-radius:10px;border:2px solid var(--teal);color:var(--teal);font-weight:700;list-style:none}
+details.ans>summary::-webkit-details-marker{display:none}
+details.ans[open]>summary{background:var(--tealbg)}
+details.ans .body{margin-top:12px;padding:12px 14px;background:var(--tealbg);border-radius:10px}
+.passage{background:var(--amberbg);border-left:5px solid var(--amber);border-radius:0 12px 12px 0;padding:14px 16px;margin:16px 0}
+.passage b{color:var(--amber)}
+.choices{list-style:none;padding:0;margin:8px 0 12px}
+.choices li{padding:6px 0}
+.backline{margin-top:40px}
+.note{font-size:15px;color:var(--soft)}
+footer{border-top:1px solid var(--line);padding:24px max(5vw,16px);font-size:14px;color:var(--soft)}
+footer p{max-width:760px;margin:.4em auto}
+@media print{header.top,.levels,footer,.backline{display:none!important}body{background:#fff;color:#000}details.ans .body{display:block}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="top">
+  <a class="brand" href="#home">Follow the Why</a>
+  <a href="#home" class="note">All topics</a>
+</header>
+<main id="main" tabindex="-1">
+
+<section class="view" id="v-home">
+  <h1>200 core ideas in biology, taught with questions</h1>
+  <p class="lede">Each topic is explained the way I teach it in class. I ask a question, you think about it, then you open my answer. Every topic starts with the fundamentals and climbs to MCAT level.</p>
+  <div id="featured"></div>
+  <h2>All topics</h2>
+  <p class="note" id="count"></p>
+  <label for="find" class="note">Search the topics</label>
+  <input id="find" class="search" type="search" placeholder="Try oxygen, fat, DNA">
+  <div id="areas"></div>
+</section>
+
+<section class="view" id="v-lesson" hidden>
+  <article id="lesson"></article>
+</section>
+
+</main>
+<footer>
+  <p>A free supplement to class, not a replacement for it, and not exam preparation. Written with AI assistance and reviewed by me, but it may contain errors, so check it against your textbook and instructor. Disease connections are for learning only, and nothing here is medical advice. MCAT style practice only; not affiliated with or endorsed by the AAMC, any university, testing organization or publisher.</p>
+  <p>Professor Guttmann</p>
+</footer>
+
+<script>
+/* Loads a script from the main folder, or from a subfolder if it was uploaded there. */
+function load(paths,done){
+  const tryOne=i=>{if(i>=paths.length)return done(false);const s=document.createElement("script");s.src=paths[i];s.onload=()=>done(true);s.onerror=()=>{s.remove();tryOne(i+1)};document.body.appendChild(s)};
+  tryOne(0);
+}
+load(["questions.js","data/questions.js"],init);
+
+function init(){
+const A=window.AREAS||[];
+const $=s=>document.querySelector(s);
+const esc=t=>String(t).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const all=A.flatMap(a=>a.qs.map(q=>typeof q==="string"?{t:q}:q));
+const ready=all.filter(q=>q.id);
+$("#featured").innerHTML=ready.map(q=>`<a class="featured" href="#t-${q.id}">${esc(q.t)}</a>`).join("");
+$("#count").textContent=`${ready.length} of ${all.length} topics are ready. More are being added.`;
+function drawAreas(f){
+  f=(f||"").toLowerCase().trim();
+  $("#areas").innerHTML=A.map(a=>{
+    const items=a.qs.map(q=>typeof q==="string"?{t:q}:q).filter(q=>!f||q.t.toLowerCase().includes(f));
+    if(!items.length)return"";
+    const n=items.filter(q=>q.id).length;
+    return `<details class="area"${f?" open":""}><summary>${esc(a.name)} <span class="tag">${items.length} topics${n?", "+n+" ready":""}</span></summary><ul>${items.map(q=>q.id
+      ?`<li><a href="#t-${q.id}">${esc(q.t)}</a><span class="tag ready">Ready</span></li>`
+      :`<li><span class="soon">${esc(q.t)}</span><span class="tag">Coming soon</span></li>`).join("")}</ul></details>`}).join("")||`<p class="note">No topics match that yet.</p>`;
+}
+drawAreas("");
+$("#find").addEventListener("input",e=>drawAreas(e.target.value));
+
+const slug=t=>t.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+function render(L){
+  const levels=L.blocks.filter(b=>b.h).map(b=>b.h);
+  let n=0,h=`<h1>${esc(L.title)}</h1><nav aria-label="Levels in this topic"><ul class="levels">${levels.map(x=>`<li><a href="#t-${cur}" data-jump="${slug(x)}">${esc(x)}</a></li>`).join("")}</ul></nav>`;
+  let li=0;
+  for(const b of L.blocks){
+    if(b.h){li++;h+=`<section class="level" id="lv-${slug(b.h)}" tabindex="-1"><p class="step">Level ${li} of ${levels.length}</p><h2>${esc(b.h)}</h2></section>`}
+    else if(b.p)h+=`<p class="talk">${b.p}</p>`;
+    else if(b.q){n++;h+=`<div class="ask"><p class="qq">${b.q}</p><p class="think">Think about it first. Then open my answer.</p><details class="ans"><summary>Open my answer</summary><div class="body">${b.a}</div></details></div>`}
+    else if(b.mcat){
+      h+=`<div class="passage"><b>Passage.</b> ${b.mcat.passage}</div>`;
+      b.mcat.qs.forEach((m,i)=>{h+=`<div class="ask"><p class="qq">${i+1}. ${m.q}</p>${m.choices.length?`<ul class="choices">${m.choices.map(c=>`<li>${c}</li>`).join("")}</ul>`:""}<p class="think">Pick your answer and say why before you open mine.</p><details class="ans"><summary>Open my answer</summary><div class="body">${m.a}</div></details></div>`});
+    }
+  }
+  h+=`<p class="backline"><a href="#home">Back to all topics</a></p>`;
+  $("#lesson").innerHTML=h;
+  $("#lesson").querySelectorAll("[data-jump]").forEach(a=>a.addEventListener("click",e=>{e.preventDefault();const el=document.getElementById("lv-"+a.dataset.jump);el.scrollIntoView();el.focus({preventScroll:true})}));
+  $("#lesson h1").setAttribute("tabindex","-1");$("#lesson h1").focus({preventScroll:true});
+}
+let cur=null;
+function route(){
+  const h=(location.hash||"#home").slice(1);
+  const id=h.startsWith("t-")?h.slice(2):null;
+  const ok=id&&ready.some(q=>q.id===id);
+  $("#v-home").hidden=!!ok;$("#v-lesson").hidden=!ok;
+  window.scrollTo(0,0);
+  if(!ok)return;
+  cur=id;
+  const go=()=>{const L=(window.LESSONS||{})[id];if(L)render(L);else $("#lesson").innerHTML=`<p>This topic couldn't load. <a href="#home">Back to all topics</a></p>`};
+  if((window.LESSONS||{})[id])go();else load([`lessons/${id}.js`,`${id}.js`],go);
+}
+window.addEventListener("hashchange",route);route();
+}
+</script>
+</body>
+</html>

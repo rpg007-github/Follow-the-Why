@@ -1,0 +1,73 @@
+/* One lesson. Blocks: {h:"level name"} starts a level, {p:"..."} is me talking, {q:"...", a:"..."} is a question the student thinks about before opening my answer, {mcat:{passage, qs:[{q, choices, a}]}} is MCAT style practice. */
+window.LESSONS = window.LESSONS || {};
+window.LESSONS.eat = {
+title: "Why do we eat?",
+blocks: [
+{p:"Okay, here's a question that sounds too easy. Why do you eat? Most people say \"for energy,\" and they're right. But almost nobody can tell me what that actually means. So let's find out. By the end, you'll know why you were made to memorize glycolysis, the Krebs cycle and oxidative phosphorylation, and you'll be able to handle an MCAT question built on them."},
+
+{h:"Fundamentals"},
+{p:"Start with the easy answer, energy, and push on it. What is energy to a cell?"},
+{q:"What do your cells actually spend for energy?",
+ a:"ATP. When a muscle contracts or a pump pushes sodium out of a cell, ATP pays for it. Think of ATP as cash in your pocket: it's what you spend. Glucose and fat are more like your paycheck. Students often answer \"glucose\" or \"calories.\" Glucose is something cells burn to make ATP, and a calorie is just a unit that measures energy, the way an inch measures length."},
+{q:"So if cells run on ATP, why don't you just eat ATP?",
+ a:"Two reasons. Your gut breaks ATP apart like any other nucleotide, so it never arrives as fuel. And cells don't take in ATP from outside to run on. They make their own, constantly, and you turn over an enormous amount of it every day. So the real question was never where to get ATP. It's what your cells can use to make it."},
+{p:"Now remind yourself what you learned in Biology I. You memorized three pathways: glycolysis, the Krebs cycle, which is also called the citric acid cycle, and oxidative phosphorylation. You probably learned the steps, maybe the enzymes, and moved on."},
+{q:"Why did you have to memorize those three pathways?",
+ a:"Because they're how your cells turn food into ATP. That's the whole reason. And it gives you a test: anything that counts as food has to find a way into those pathways. If a molecule has no way in, it can't make ATP no matter how much of it you eat."},
+{q:"Use that test. Can table salt give you energy?",
+ a:"No. Sodium chloride has no carbon to burn and no entry point into glycolysis or the Krebs cycle. Salt matters a great deal for nerve signals and water balance, but it can never be fuel."},
+{q:"Then why do we eat protein? Is it for energy?",
+ a:"Mostly no. You eat protein for building blocks. Digestion breaks it into amino acids, and your cells rebuild them into your own proteins from your own DNA. Nine of the amino acids you can't make at all, so they have to come from food. Protein can be burned for energy, since the carbon skeletons of amino acids enter the same pathways as sugar and fat, but it leaves nitrogen behind that the liver has to turn into urea. So it's a backup fuel, not a main one."},
+{p:"So here's where we are. You eat for two things: fuel your cells can burn to make ATP, and building blocks to make more of you. Sugar and fat are the main fuels. Protein is mainly building blocks. Salt is neither."},
+
+{h:"Connecting the courses"},
+{p:"Now let's go deeper. We keep saying cells \"burn\" fuel. What does that actually mean? Think back to organic chemistry and the oxidation ladder: alkane, then alcohol, then aldehyde or ketone, then carboxylic acid, then carbon dioxide."},
+{q:"What happens to a carbon as it moves up that ladder?",
+ a:"It gives away electrons. Each step up the ladder, the carbon is more oxidized, which means it has lost more electrons. Carbon dioxide is at the top: that carbon has nothing left to give. So burning a fuel means walking its carbons up the ladder to carbon dioxide and catching the electrons as they come off."},
+{q:"A fatty acid is mostly CH2, CH2, CH2. A sugar has an OH on nearly every carbon. Which one holds more energy per gram, and why?",
+ a:"Fat. A CH2 sits at the very bottom of the ladder with the most electrons left to give. A sugar carbon already carries an OH, so it's partway up and has fewer to give. That's why fat gives you about 9 Calories per gram and sugar about 4. It isn't magic. It's oxidation level. Fat is also stored without water, which makes it even more compact."},
+{p:"Now go back to general chemistry and electronegativity, which just means how much an atom loves electrons. Carbon and hydrogen love electrons about equally, so the electrons in a C and H bond are loosely held. Oxygen loves electrons more than almost any other atom."},
+{q:"So why is it the electrons that carry the energy, and not the carbon atoms themselves?",
+ a:"Because energy comes from something moving from a high spot to a low spot, like water going over a dam. Electrons in C and H bonds are held loosely, high up. Electrons on oxygen are held tightly, way down low. Moving electrons from food to oxygen is downhill, and that drop releases energy. Here's the sentence to remember: energy in biology is electrons falling toward something that wants them more."},
+{q:"When a cell pulls electrons off food, what catches them? And when you see hydrogen move, what should you ask?",
+ a:"Carriers catch them, mainly NAD+ and FAD. Every time you see hydrogen move, count the electrons. NAD+ takes a hydride, which is one proton carrying two electrons, and becomes NADH. The second proton goes off as a plain H+, with no electrons. That's why you see it written NADH + H+. FAD takes two whole hydrogen atoms, two protons and two electrons, and becomes FADH2. A bare H+ carries no electrons at all, so it isn't carrying energy."},
+{q:"Where do those electrons end up?",
+ a:"On oxygen. NADH and FADH2 hand their electrons to the electron transport chain in the inner membrane of the mitochondrion. At the end of the chain, oxygen catches them, picks up protons and becomes water. That's why you need oxygen: it's the bottom of the hill."},
+{q:"Why don't cells just let the electrons drop onto oxygen all at once?",
+ a:"Because that's fire. Burning a log and burning glucose in your cells are the same overall reaction. A fire releases everything at once as heat and light. Your cells let the electrons down a staircase of carriers instead and catch the energy at each step. At each step, the energy pumps protons, bare H+, across the inner membrane, like water piling up behind a dam. Then the protons flow back through ATP synthase, and that flow makes ATP. Electrons fall, protons are pumped, ATP is made. Keep those three jobs separate."},
+
+{h:"Predicting new cases"},
+{p:"Now you know enough to predict things you've never been told. That's the difference between memorizing and understanding."},
+{q:"Fat is burned inside the mitochondrion, in the matrix. Why does that location make sense?",
+ a:"Put the job where the next step already is. Fatty acids are cut into two carbon pieces called acetyl CoA, and the Krebs cycle that takes them is right there in the matrix. The electron transport chain that cashes in NADH and FADH2 is in the inner membrane next door, and that's where oxygen is used. Structure begets function, at the level of a whole organelle."},
+{q:"A red blood cell has no mitochondria. What fuel can it use, and what does it make?",
+ a:"Only glucose, and only through glycolysis. With no mitochondria, it has no Krebs cycle and no electron transport chain, so it can't burn fat at all. It makes a small amount of ATP from glycolysis and turns the pyruvate into lactate."},
+{q:"Why does a red blood cell, or a sprinting muscle, make lactate instead of just stopping?",
+ a:"Follow the electrons. Glycolysis hands electrons to NAD+, making NADH. Without mitochondria or enough oxygen, NADH has nowhere to unload, so NAD+ runs out and glycolysis would stop. Making lactate dumps those electrons back onto pyruvate and frees NAD+, so glycolysis can keep making a little ATP. Lactate isn't just waste. It's how the cell keeps the lights on."},
+{q:"Cyanide blocks the last step of the electron transport chain, where electrons are handed to oxygen. Predict what happens to oxygen use, ATP and blood lactate.",
+ a:"Oxygen use drops, because electrons can no longer reach it. Protons stop being pumped, so ATP production crashes. NADH backs up, so cells lean on making lactate to free NAD+, and blood lactate rises. Glycolysis can't make nearly enough ATP for the heart and brain, which is why cyanide kills so fast."},
+{q:"In type 1 diabetes without insulin, cells can't take up glucose well. What does the body burn instead, and what goes wrong?",
+ a:"It leans hard on fat. With no insulin holding fat release back, fatty acids flood the liver. The liver makes so much acetyl CoA that it can't all enter the Krebs cycle, so it bundles the extra into ketone bodies. Ketone bodies are acids, and when they pile up faster than tissues can use them, the blood becomes acidic. That's diabetic ketoacidosis. Acetone, one of the ketone bodies, evaporates and gives a fruity smell on the breath."},
+
+{h:"MCAT level"},
+{mcat:{passage:"A researcher measures isolated liver mitochondria given fuel and oxygen. One sample gets cyanide, which blocks the final step of the electron transport chain. Another gets dinitrophenol, a compound that lets protons leak back across the inner membrane without passing through ATP synthase. A third sample gets nothing and serves as the control. This is a teaching passage, and the results describe expected directions, not real data.",
+ qs:[
+ {q:"Compared with the control, which result is expected in the dinitrophenol sample?",
+  choices:["A. Oxygen use falls and ATP production falls","B. Oxygen use rises and ATP production falls","C. Oxygen use rises and ATP production rises","D. Oxygen use is unchanged and ATP production falls"],
+  a:"B. Dinitrophenol doesn't stop the electrons, so they keep flowing to oxygen, and with nothing holding the gradient back they flow even faster. Oxygen use rises. But the protons leak back without going through ATP synthase, so ATP production falls. A describes cyanide, which stops the electrons. C is tempting if you think more oxygen use always means more ATP, but here the link between them is broken."},
+ {q:"The dinitrophenol sample also gets warmer. Which statement best explains why?",
+  choices:["A. Dinitrophenol is oxidized and releases heat","B. Energy from the falling electrons is released as heat instead of being captured as ATP","C. Mitochondria always release heat when oxygen is used","D. ATP hydrolysis increases"],
+  a:"B. The electrons still fall and the energy is still released, but without ATP synthase capturing it, it comes off as heat. C is a true statement, since some heat is always released, but it doesn't explain why this sample is warmer than the control. That's a classic trap: a true statement that doesn't answer the question. Dinitrophenol was once sold as a diet drug, and it caused deaths from overheating."},
+ {q:"Which pair of results would best tell a cyanide sample from a dinitrophenol sample?",
+  choices:["A. ATP production","B. Oxygen use","C. Amount of fuel added","D. Whether the mitochondria contain ATP synthase"],
+  a:"B. Both treatments lower ATP production, so A can't tell them apart. Oxygen use goes in opposite directions: down with cyanide, up with dinitrophenol. That's the lesson. Cyanide stops the electrons. Dinitrophenol lets the electrons run but wastes the protons."},
+ {q:"Discrete question. Palmitate is a 16 carbon fatty acid. How many acetyl CoA does complete breakdown produce, and how many rounds of cutting does it take?",
+  choices:[],
+  a:"8 acetyl CoA, from 7 rounds. Each round cuts off a two carbon piece, and the last round leaves two pieces at once, so the number of rounds is the number of carbons divided by 2, minus 1."}
+ ]}},
+
+{h:"Explain it in 60 seconds"},
+{q:"Explain to a friend, in five sentences or fewer and with no jargon you don't define, why you eat.",
+ a:"Your cells run on a small molecule called ATP, but you don't eat ATP. You eat things your cells can burn to make it. Burning, in a cell, means pulling electrons off the carbon in your food and letting them fall to the oxygen you breathe, which releases energy that the cell catches as ATP. Fat is packed with those electrons, so it's the richest fuel. Protein is mostly for building, and salt can't be burned at all."},
+{p:"<b>Notice what we did.</b> \"Why do you eat?\" sounded too easy. So we took the answer apart word by word: what is energy, where does it come from, where does it go. When you're stuck on anything, ask yourself what question you should be asking. Usually it's: what is this made of, and where are the electrons going?"}
+]};
