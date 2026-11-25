@@ -105,10 +105,15 @@ footer p{max-width:760px;margin:.4em auto}
   <p>Professor Guttmann</p>
 </footer>
 
-<script src="data/questions.js"></script>
-<script src="data/dialogues.js"></script>
 <script>
-{
+/* Load each data file from the data folder, or from the main folder if it was uploaded there. */
+function loadData(name,done){
+  const a=document.createElement("script");a.src="data/"+name;a.onload=done;
+  a.onerror=()=>{const b=document.createElement("script");b.src=name;b.onload=done;b.onerror=done;document.body.appendChild(b)};
+  document.body.appendChild(a);
+}
+loadData("questions.js",()=>loadData("dialogues.js",init));
+function init(){
 const A=window.AREAS||[],D=window.DIALOGUES||{};
 const $=s=>document.querySelector(s);
 const esc=t=>String(t).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
